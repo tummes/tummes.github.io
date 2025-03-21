@@ -1,0 +1,38 @@
+openapi: 3.0.1
+info:
+  title: Notion Access Plugin
+  version: 1.0.0
+servers:
+  - url: https://api.example.com
+paths:
+  /notion:
+    post:
+      operationId: notion_access
+      summary: Access Notion resources
+      description: Access Thomas Bjerring's Second Brain page and two Notion databases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page_id:
+                  type: string
+                  description: The Notion page ID
+                  default: "1ba4f6ad4cb0806ea2b1e4da6e91f6e4"
+                database1_id:
+                  type: string
+                  description: The first Notion database ID
+                  default: "1b54f6ad4cb080338087ef707f323b93"
+                database2_id:
+                  type: string
+                  description: The second Notion database ID
+                  default: "1ba4f6ad4cb080949aa3c8bdf2a8b4e1"
+              required:
+                - page_id
+                - database1_id
+                - database2_id
+      responses:
+        "200":
+          description: OK
